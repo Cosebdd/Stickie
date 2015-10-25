@@ -1,0 +1,33 @@
+﻿<Controls:MetroWindow x:Class="Stickie.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      Title="New Note" Height="180" Width="200"
+                      MouseWheel="MetroWindow_MouseWheel"
+                      Deactivated="MetroWindow_Deactivated"
+                      Activated="MetroWindow_Activated"
+                      Background="LightYellow"
+                      NonActiveWindowTitleBrush="LightYellow"
+                      ShowMinButton="False"
+                      ShowMaxRestoreButton="False"
+                      ShowInTaskbar="False"
+                      ShowSystemMenuOnRightClick="False"
+                      ResizeMode="CanResizeWithGrip"
+                      TitlebarHeight="20"
+                      MinHeight="100"
+                      MinWidth="150"
+                      WindowStyle="None"
+                      Opacity="0.95"
+                      Topmost="True">
+                       
+    <Grid>
+        <TextBox BorderThickness="0" 
+                 Background="LightYellow" 
+                 FontFamily="Segoe Print" 
+                 FontSize="16"
+                 Padding="5"
+                 TextWrapping="Wrap"
+                 AcceptsReturn="True"
+                 ></TextBox>
+    </Grid>
+</Controls:MetroWindow>

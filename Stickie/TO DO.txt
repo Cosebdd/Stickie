@@ -1,0 +1,2 @@
+﻿Запретить maximizing
+Переименование TitleBar
