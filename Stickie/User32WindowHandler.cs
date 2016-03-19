@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 namespace Stickie
 {
-    public static class WindowsServices
+    public static class User32WindowHandler
     {
         const int WM_NCLBUTTONDBLCLK = 0x00A3;
         const int WS_EX_TRANSPARENT = 0x00000020;

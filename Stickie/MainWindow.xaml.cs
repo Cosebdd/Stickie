@@ -22,11 +22,43 @@ namespace Stickie
     /// </summary>
     public partial class MainWindow 
     {
+        private User32KeyboardListener _listener;
+        private IntPtr _hwnd;
+
         public MainWindow()
         {
             InitializeComponent();
             this.AllowsTransparency = true;
+            _listener = new User32KeyboardListener();
+            _listener.OnKeyPressed += _listener_OnKeyPressed;
+            _listener.OnKeyReleased += _listener_OnKeyReleased;
+            _listener.HookKeyboard();
+
         }
+
+        void _listener_OnKeyReleased(object sender, KeyArgs e)
+        {
+            if (!this.IsActive)
+            {
+                if (e.KeyPressed == Key.LeftCtrl || e.KeyPressed == Key.RightCtrl)
+                {
+                    User32WindowHandler.SetWindowExTransparent(_hwnd);
+                }
+            }
+        }
+
+        void _listener_OnKeyPressed(object sender, KeyArgs e)
+        {
+            if (!this.IsActive)
+            {
+                if (e.KeyPressed == Key.LeftCtrl || e.KeyPressed == Key.RightCtrl)
+                {
+                    User32WindowHandler.ResetWindowExTransparent(_hwnd);
+                }
+            }
+        }
+
+
 
         private void MetroWindow_MouseWheel(object sender, MouseWheelEventArgs e)
         {
@@ -39,21 +71,20 @@ namespace Stickie
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
-            var hwnd = new WindowInteropHelper(this).Handle;
-            WindowsServices.TurnOffMaximizing(hwnd);
+            _hwnd = new WindowInteropHelper(this).Handle;
+            User32WindowHandler.TurnOffMaximizing(_hwnd);
         }
 
         private void MetroWindow_Activated(object sender, EventArgs e)
         {
-            var hwnd = new WindowInteropHelper(this).Handle;
-            WindowsServices.ResetWindowExTransparent(hwnd);
+            User32WindowHandler.ResetWindowExTransparent(_hwnd);
         }
 
         private void MetroWindow_Deactivated(object sender, EventArgs e)
         {
-            var hwnd = new WindowInteropHelper(this).Handle;
-            WindowsServices.SetWindowExTransparent(hwnd);
+            User32WindowHandler.SetWindowExTransparent(_hwnd);
         }
+
 
     }
 }
