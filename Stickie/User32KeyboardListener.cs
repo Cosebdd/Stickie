@@ -33,7 +33,7 @@ namespace Stickie
         public event EventHandler<KeyArgs> OnKeyReleased;
  
         private LowLevelKeyboardProc _proc;
-        private IntPtr _hookID = IntPtr.Zero;
+        private IntPtr _hookId = IntPtr.Zero;
 
         public User32KeyboardListener()
         {
@@ -42,12 +42,12 @@ namespace Stickie
  
         public void HookKeyboard()
         {
-            _hookID = SetHook(_proc);
+            _hookId = SetHook(_proc);
         }
  
         public void UnHookKeyboard()
         {
-            UnhookWindowsHookEx(_hookID);
+            UnhookWindowsHookEx(_hookId);
         }
  
         private IntPtr SetHook(LowLevelKeyboardProc proc)
@@ -75,7 +75,7 @@ namespace Stickie
 
             }
  
-            return CallNextHookEx(_hookID, nCode, wParam, lParam);
+            return CallNextHookEx(_hookId, nCode, wParam, lParam);
         }
     }
 

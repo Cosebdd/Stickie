@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Windows.Interop;
 
 namespace Stickie
 {
@@ -33,8 +30,8 @@ namespace Stickie
 
         public static void TurnOffMaximizing(IntPtr hwnd)
         {
-            var source = System.Windows.Interop.HwndSource.FromHwnd(hwnd);
-            source.AddHook(new System.Windows.Interop.HwndSourceHook(WndProc));
+            var source = HwndSource.FromHwnd(hwnd);
+            if (source != null) source.AddHook(WndProc);
         }
 
         private static IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
