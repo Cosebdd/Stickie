@@ -81,11 +81,11 @@ namespace Stickie
 
      public class KeyArgs : EventArgs
     {
-        public Key KeyPressed { get; private set; }
+        public Key Key { get; private set; }
  
         public KeyArgs(Key key)
         {
-            KeyPressed = key;
+            Key = key;
         }
     }
 }

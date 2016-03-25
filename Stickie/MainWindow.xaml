@@ -1,8 +1,9 @@
-﻿<Controls:MetroWindow x:Class="Stickie.MainWindow"
+﻿<controls:MetroWindow x:Class="Stickie.MainWindow"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-                      Title="New Note"
+                      xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:local="clr-namespace:Stickie"
+                      Title="{Binding Title, UpdateSourceTrigger=PropertyChanged}"
                       MouseWheel="MetroWindow_MouseWheel"
                       Deactivated="MetroWindow_Deactivated"
                       Activated="MetroWindow_Activated"
@@ -13,23 +14,42 @@
                       ShowInTaskbar="False"
                       ShowSystemMenuOnRightClick="False"
                       SizeToContent="WidthAndHeight"
-                      ResizeMode="NoResize"
                       TitlebarHeight="20"
-                      MinHeight="100"
-                      MinWidth="150"
+                      MinHeight="150"
+                      MinWidth="200"
                       WindowStyle="None"
                       Opacity="0.95"
-                      Topmost="True">
-                       
+                      Topmost="True"
+                      >
+    <controls:MetroWindow.TitleTemplate>
+        <DataTemplate>
+            <local:TitleTextBox
+                x:Name="TitleBox"
+                controls:TextBoxHelper.Watermark="Enter your note here"
+                Text="{TemplateBinding Content}"
+                CharacterCasing="Upper"
+                FontFamily="sans-serif"
+                FontSize="16"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                PreviewMouseMove="TitleBox_OnPreviewMouseMove"
+                PreviewMouseLeftButtonDown="TitleBox_OnPreviewMouseLeftButtonDown"/>
+        </DataTemplate>
+    </controls:MetroWindow.TitleTemplate>
+
     <Grid>
         <TextBox BorderThickness="0" 
-                 MinHeight="180" Width="200"
+                 
+                 TextAlignment="Left"
                  Background="LightYellow" 
                  FontFamily="Segoe Print" 
                  FontSize="16"
                  Padding="5"
                  TextWrapping="Wrap"
                  AcceptsReturn="True"
-                 ></TextBox>
+                 Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"
+                 />
     </Grid>
-</Controls:MetroWindow>
+</controls:MetroWindow>
+
