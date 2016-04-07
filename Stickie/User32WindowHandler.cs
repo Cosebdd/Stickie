@@ -28,11 +28,11 @@ namespace Stickie
             SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle & ~WS_EX_TRANSPARENT);
         }
 
-        public static void TurnOffMaximizing(IntPtr hwnd)
+        /*public static void TurnOffMaximizing(IntPtr hwnd)
         {
             var source = HwndSource.FromHwnd(hwnd);
             if (source != null) source.AddHook(WndProc);
-        }
+        }*/
 
         private static IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {

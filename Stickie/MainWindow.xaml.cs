@@ -8,7 +8,7 @@ namespace Stickie
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class MainWindow : UnmaximizibleWindow
     {
         private IntPtr _hwnd;
 
@@ -60,7 +60,7 @@ namespace Stickie
         {
             base.OnSourceInitialized(e);
             _hwnd = new WindowInteropHelper(this).Handle;
-            User32WindowHandler.TurnOffMaximizing(_hwnd);
+            
         }
 
         private void MetroWindow_Activated(object sender, EventArgs e)

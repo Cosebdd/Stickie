@@ -63,6 +63,7 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="StickerModel.cs" />
     <Compile Include="StickerViewModel.cs" />
+    <Compile Include="UnmaximizibleWindow.cs" />
     <Compile Include="User32KeyboardListener.cs" />
     <Compile Include="User32WindowHandler.cs" />
     <Page Include="MainWindow.xaml">
