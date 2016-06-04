@@ -9,6 +9,7 @@ using System.Windows;
 
 namespace Stickie
 {
+    //This window contains series of dirty hacks, unfortunately there's nothing to do with it :(
     [TemplatePart(Name = PART_TitleBar, Type = typeof(UIElement))]
     public class UnmaximizibleWindow : MetroWindow 
     {
@@ -41,7 +42,7 @@ namespace Stickie
             if (this.ResizeMode == System.Windows.ResizeMode.NoResize)
             {
                 // restore resize grips
-                this.ResizeMode = System.Windows.ResizeMode.CanResizeWithGrip;
+                this.ResizeMode = System.Windows.ResizeMode.CanResize;
                 this.UpdateLayout();
             }
         }

@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using MahApps.Metro.Controls;
+using System.Windows.Media;
 
 namespace Stickie
 {
@@ -14,7 +15,6 @@ namespace Stickie
             DisableControl(this, null);
             MouseDoubleClick += ActivateControl;
             LostFocus += DisableControl;
-            
         }
 
 
