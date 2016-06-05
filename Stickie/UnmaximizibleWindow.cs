@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MahApps.Metro.Controls;
 using System.Windows.Input;
 using System.Windows;
 
 namespace Stickie
 {
-    //This window contains series of dirty hacks, unfortunately there's nothing to do with it :(
     [TemplatePart(Name = PART_TitleBar, Type = typeof(UIElement))]
-    public class UnmaximizibleWindow : MetroWindow 
+    public class UnmaximizibleWindow : Window 
     {
         private const string PART_TitleBar = "PART_TitleBar";
 
@@ -46,6 +44,7 @@ namespace Stickie
                 this.UpdateLayout();
             }
         }
+
 
     }
 }

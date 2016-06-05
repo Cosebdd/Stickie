@@ -1,5 +1,4 @@
-﻿using MahApps.Metro.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +8,7 @@ using System.Windows.Input;
 
 namespace Stickie.WindowBehaviorAppliers
 {
-    public class WindowNoMaximizeOnAeroSnapApplier : IWindowBehaviorApplier
+    class WindowNoMaximizeOnAeroSnapApplier : IWindowBehaviorApplier
     {
         private Window _window;
 
@@ -43,5 +42,6 @@ namespace Stickie.WindowBehaviorAppliers
             // TO DO: handle TitleBar Somehow
             _window.LocationChanged += OnLocationChanged;
         }
+
     }
 }
