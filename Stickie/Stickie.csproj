@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MahApps.Metro">
-      <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net45\MahApps.Metro.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -59,13 +56,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="TitleTextBox.cs" />
+    <Compile Include="Controls\TitleTextBox.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="StickerModel.cs" />
     <Compile Include="StickerViewModel.cs" />
+    <Compile Include="Styles\DefaultStickieStyle.cs" />
     <Compile Include="UnmaximizibleWindow.cs" />
-    <Compile Include="User32KeyboardListener.cs" />
-    <Compile Include="User32WindowHandler.cs" />
+    <Compile Include="WinLibs\User32KeyboardListener.cs" />
+    <Compile Include="WinLibs\User32WindowHandler.cs" />
+    <Compile Include="WindowBehaviorAppliers\WindowClickThroughApplier.cs" />
+    <Compile Include="WindowBehaviorAppliers\WindowNoMaximizeOnAeroSnapApplier.cs" />
+    <Compile Include="WindowBehaviorAppliers\WindowOpacityApplier.cs" />
+    <Compile Include="WindowBehaviorAppliers\IWindowBehaviorApplier.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,6 +80,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Styles\DefaultStickieStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

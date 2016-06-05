@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MahApps.Metro.Controls;
 using System.Windows.Input;
 using System.Windows;
 
 namespace Stickie
 {
     [TemplatePart(Name = PART_TitleBar, Type = typeof(UIElement))]
-    public class UnmaximizibleWindow : MetroWindow 
+    public class UnmaximizibleWindow : Window 
     {
         private const string PART_TitleBar = "PART_TitleBar";
 
@@ -41,10 +40,11 @@ namespace Stickie
             if (this.ResizeMode == System.Windows.ResizeMode.NoResize)
             {
                 // restore resize grips
-                this.ResizeMode = System.Windows.ResizeMode.CanResizeWithGrip;
+                this.ResizeMode = System.Windows.ResizeMode.CanResize;
                 this.UpdateLayout();
             }
         }
+
 
     }
 }
