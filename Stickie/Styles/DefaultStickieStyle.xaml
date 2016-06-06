@@ -35,9 +35,13 @@
                         <Grid TextOptions.TextRenderingMode="ClearType"
                               TextOptions.TextFormattingMode="Display">
                             <DockPanel HorizontalAlignment="Stretch"
-                                       VerticalAlignment="Stretch">
+                                       VerticalAlignment="Stretch"
+                                       >
                                 <Border
                                     x:Name="TitleBar"
+                                    PreviewMouseLeftButtonDown="TitleBarLMDownPreview"
+                                    PreviewMouseMove="TitleBarMouseMovePreview"
+                                    PreviewMouseLeftButtonUp="TitleBarLMUpPreview"
                                     MouseLeftButtonDown="TitleBarLMDown"
                                     DockPanel.Dock="Top"
                                     Background="{StaticResource TitleBarBackgroundBrush}"

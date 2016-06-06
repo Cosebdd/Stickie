@@ -14,33 +14,16 @@ namespace Stickie.WindowBehaviorAppliers
 
         private void OnLocationChanged(object sender, EventArgs e)
         {
-            ResotreResizeGrip();
+            //ResotreResizeGrip();
         }
 
-        private void NoResizeGrip()
-        {
-            if (_window.ResizeMode != System.Windows.ResizeMode.NoResize)
-            {
-                _window.ResizeMode = System.Windows.ResizeMode.NoResize;
-                _window.UpdateLayout();
-            }
-        }
 
-        private void ResotreResizeGrip()
-        {
-            if (_window.ResizeMode == System.Windows.ResizeMode.NoResize)
-            {
-                // restore resize grips
-                _window.ResizeMode = System.Windows.ResizeMode.CanResize;
-                _window.UpdateLayout();
-            }
-        }
 
         public void ApplyBehavior(Window window)
         {
             _window = window;
             // TO DO: handle TitleBar Somehow
-            _window.LocationChanged += OnLocationChanged;
+            //_window.LocationChanged += OnLocationChanged;
         }
 
     }
