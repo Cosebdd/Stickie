@@ -7,7 +7,7 @@
                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
 
     <SolidColorBrush x:Key="TitleBarBackgroundBrush" Color="#ffff66"/>
-    <SolidColorBrush x:Key="TitleBarInactiveBackgroundBrush" Color="#ffff80"/>
+    <SolidColorBrush x:Key="TitleBarInactiveBackgroundBrush" Color="#ffff99"/>
     <SolidColorBrush x:Key="BackgroundBrush" Color="#ffffcc"/>
 
     <Style x:Key="DefaultStickieStyle" TargetType="{x:Type Window}">
@@ -40,7 +40,7 @@
                                        VerticalAlignment="Stretch"
                                        >
                                 <Border
-                                    x:Name="TitleBar"
+                                    x:Name="PART_TitleBar"
                                     DockPanel.Dock="Top"
                                     Background="{StaticResource TitleBarBackgroundBrush}"
                                     BorderThickness="0">
@@ -49,7 +49,7 @@
                                             <ColumnDefinition />
                                             <ColumnDefinition Width="24"/>
                                         </Grid.ColumnDefinitions>
-                                        <ccontrols:TitleTextBox x:Name="TitleTextBox"
+                                        <ccontrols:TitleTextBox x:Name="PART_TitleTextBox"
                                                                 Grid.Column="0"
                                                                 HorizontalAlignment="Left"
                                                                 VerticalAlignment="Center"
@@ -64,7 +64,7 @@
                                             </i:Interaction.Behaviors>
                                         </ccontrols:TitleTextBox>
                                         <Button Grid.Column="1"
-                                                x:Name="CloseButton" 
+                                                x:Name="PART_CloseButton" 
                                                 VerticalAlignment="Top"
                                                 Width="24"
                                                 Height="24"
@@ -85,11 +85,16 @@
                                     </Grid>
 
                                 </Border>
-
+                                
                                 <ContentPresenter/>
                             </DockPanel>
                         </Grid>
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsActive" Value="False">
+                            <Setter TargetName="PART_TitleBar" Property="Background" Value="{StaticResource TitleBarInactiveBackgroundBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
