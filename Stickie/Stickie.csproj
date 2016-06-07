@@ -56,18 +56,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Behaviors\ClickableDragMoveBehavior.cs" />
+    <Compile Include="Behaviors\ScrollOpacityBehavior.cs" />
+    <Compile Include="Behaviors\WindowClickThroughBehavior.cs" />
     <Compile Include="Controls\TitleTextBox.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="StickerModel.cs" />
     <Compile Include="StickerViewModel.cs" />
     <Compile Include="Styles\DefaultStickieStyle.cs" />
-    <Compile Include="UnmaximizibleWindow.cs" />
     <Compile Include="WinLibs\User32KeyboardListener.cs" />
     <Compile Include="WinLibs\User32WindowHandler.cs" />
-    <Compile Include="WindowBehaviorAppliers\WindowClickThroughApplier.cs" />
-    <Compile Include="WindowBehaviorAppliers\WindowNoMaximizeOnAeroSnapApplier.cs" />
-    <Compile Include="WindowBehaviorAppliers\WindowOpacityApplier.cs" />
-    <Compile Include="WindowBehaviorAppliers\IWindowBehaviorApplier.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
