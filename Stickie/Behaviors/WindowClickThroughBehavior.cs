@@ -5,23 +5,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Interactivity;
 using System.Windows.Interop;
 
-namespace Stickie.WindowBehaviorAppliers
+namespace Stickie.Behaviors
 {
-    class WindowClickThroughApplier : IWindowBehaviorApplier
+    class WindowClickThroughBehavior : Behavior<Window>
     {
         private Window _window;
 
         private IntPtr _hwnd;
 
-        public void ApplyBehavior(Window window)
+        protected override void OnAttached()
         {
-            _window = window;
-            HookKeyboard();
+            base.OnAttached();
+            _window = AssociatedObject;
             _window.SourceInitialized += _window_SourceInitialized;
             _window.Activated += _window_Activated;
             _window.Deactivated += _window_Deactivated;
+            HookKeyboard();
+        }
+
+        protected override void OnDetaching()
+        {
+            base.OnDetaching();
+            _window.SourceInitialized -= _window_SourceInitialized;
+            _window.Activated -= _window_Activated;
+            _window.Deactivated -= _window_Deactivated;
+        }
+
+        private void _window_SourceInitialized(object sender, EventArgs e)
+        {
+            _hwnd = new WindowInteropHelper(_window).Handle;
         }
 
         private void _window_Deactivated(object sender, EventArgs e)
@@ -32,13 +47,6 @@ namespace Stickie.WindowBehaviorAppliers
         private void _window_Activated(object sender, EventArgs e)
         {
             User32WindowHandler.ResetWindowExTransparent(_hwnd);
-        }
-
-
-
-        private void _window_SourceInitialized(object sender, EventArgs e)
-        {
-            _hwnd = new WindowInteropHelper(_window).Handle;
         }
 
         private void HookKeyboard()
@@ -67,7 +75,5 @@ namespace Stickie.WindowBehaviorAppliers
                 User32WindowHandler.ResetWindowExTransparent(_hwnd);
             }
         }
-
-
     }
 }

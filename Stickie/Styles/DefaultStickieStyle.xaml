@@ -2,7 +2,9 @@
                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Stickie.Styles"
-                    xmlns:ccontrols="clr-namespace:Stickie.Controls">
+                    xmlns:ccontrols="clr-namespace:Stickie.Controls"
+                    xmlns:behaviors="clr-namespace:Stickie.Behaviors"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
 
     <SolidColorBrush x:Key="TitleBarBackgroundBrush" Color="#ffff66"/>
     <SolidColorBrush x:Key="TitleBarInactiveBackgroundBrush" Color="#ffff80"/>
@@ -12,7 +14,7 @@
         <Setter Property="WindowStyle" Value="None"/>
         <Setter Property="AllowsTransparency" Value="True"/>
         <Setter Property="Background" Value="Black"/>
-        <Setter Property="ResizeMode" Value="CanResize"/>
+        <Setter Property="ResizeMode" Value="NoResize"/>
         <Setter Property="ShowInTaskbar" Value="False"/>
         <Setter Property="SizeToContent" Value="WidthAndHeight"/>
         <Setter Property="MinHeight" Value="150"/>
@@ -23,7 +25,7 @@
             <Setter.Value>
                 <WindowChrome NonClientFrameEdges="None"
                               ResizeBorderThickness="7"
-                              CaptionHeight="0"/>
+                              CaptionHeight="24"/>
             </Setter.Value>
         </Setter>
 
@@ -39,10 +41,6 @@
                                        >
                                 <Border
                                     x:Name="TitleBar"
-                                    PreviewMouseLeftButtonDown="TitleBarLMDownPreview"
-                                    PreviewMouseMove="TitleBarMouseMovePreview"
-                                    PreviewMouseLeftButtonUp="TitleBarLMUpPreview"
-                                    MouseLeftButtonDown="TitleBarLMDown"
                                     DockPanel.Dock="Top"
                                     Background="{StaticResource TitleBarBackgroundBrush}"
                                     BorderThickness="0">
@@ -59,7 +57,12 @@
                                                                 FontSize="14"
                                                                 Background="Transparent"
                                                                 BorderThickness="0"
-                                                                Text="{Binding Path=Title, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                                Text="{Binding Path=Title, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                WindowChrome.IsHitTestVisibleInChrome="True">
+                                            <i:Interaction.Behaviors>
+                                                <behaviors:ClickableDragMoveBehavior/>
+                                            </i:Interaction.Behaviors>
+                                        </ccontrols:TitleTextBox>
                                         <Button Grid.Column="1"
                                                 x:Name="CloseButton" 
                                                 VerticalAlignment="Top"

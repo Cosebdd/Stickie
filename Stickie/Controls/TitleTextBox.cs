@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
+
 namespace Stickie.Controls
 {
     internal class TitleTextBox : TextBox
